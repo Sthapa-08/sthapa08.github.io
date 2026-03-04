@@ -29,12 +29,12 @@ jobs:
           node-version: '18'
 
       - name: Install Dart Sass
-        run: npm install -g sass
+        run: npm install -g sass-embedded
 
       - name: Build
-        run: |
-          export PATH="$(npm config get prefix)/bin:$PATH"
-          hugo --gc --minify
+        env:
+          HUGO_DARTSASS_BIN: sass
+        run: hugo --gc --minify
 
       - name: Deploy
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
