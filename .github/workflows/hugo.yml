@@ -23,11 +23,18 @@ jobs:
           hugo-version: '0.141.0'
           extended: true
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
       - name: Install Dart Sass
         run: npm install -g sass
 
       - name: Build
-        run: hugo --gc --minify
+        run: |
+          export PATH="$(npm config get prefix)/bin:$PATH"
+          hugo --gc --minify
 
       - name: Deploy
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
