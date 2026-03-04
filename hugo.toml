@@ -1,0 +1,9 @@
+baseURL = 'https://sthapa08.github.io/'
+languageCode = 'en-us'
+title = 'Sthapa08'
+theme = 'paige'
+
+[outputs]
+  home = ['HTML', 'JSON']
+  page = ['HTML']
+  section = ['HTML', 'JSON']
